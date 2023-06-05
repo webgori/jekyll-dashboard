@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/jekyll-dashboard.iml" filepath="$PROJECT_DIR$/.idea/jekyll-dashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/jekyll-post-manager.iml" filepath="$PROJECT_DIR$/.idea/jekyll-post-manager.iml" />
     </modules>
   </component>
 </project>
