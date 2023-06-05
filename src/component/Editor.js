@@ -36,7 +36,7 @@ function Editor() {
         let clientId = localStorage.getItem("clientId");
 
         if (code == null) {
-            window.location.replace("https://github.com/login/oauth/authorize?client_id=" + clientId);
+            window.location.replace("https://github.com/login/oauth/authorize?client_id=" + clientId + "&scope=repo,user");
         }
 
         console.log("aa")
@@ -72,9 +72,9 @@ function Editor() {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                client_id    : clientId,
+                client_id: clientId,
                 client_secret: clientSecret,
-                code
+                code: code
             })
         });
 
