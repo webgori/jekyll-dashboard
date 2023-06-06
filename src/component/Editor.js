@@ -1,24 +1,13 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import {styled} from '@mui/material/styles';
 import MDEditor from '@uiw/react-md-editor';
-import Button from "@mui/material/Button";
-
-const Item = styled(Paper)(({theme}) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
+import axios from "axios";
 
 function Editor() {
     const [value, setValue] = React.useState("**Hello world!!!**");
 
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -65,7 +54,7 @@ function Editor() {
                 }
             });*/
 
-        const response = await fetch(`https://github.com/login/oauth/access_token`, {
+        /*const response = await fetch(`https://github.com/login/oauth/access_token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +67,20 @@ function Editor() {
             })
         });
 
-        console.log(response);
+        console.log(response);*/
+
+        const axiosResponse = await axios.post('http://localhost:8000/oauth/github/access-token', JSON.stringify({
+            client_id: clientId,
+            client_secret: clientSecret,
+            code: code
+        }), {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        });
+
+        console.log(axiosResponse);
     }
 
     return (
