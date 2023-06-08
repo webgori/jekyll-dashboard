@@ -1,21 +1,23 @@
-import * as React from 'react';
-import {useEffect} from 'react';
-import Editor from './Editor';
-import { useNavigate } from "react-router-dom";
+import * as React from "react";
+import { useEffect } from "react";
+import Editor from "./Editor";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Post() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const { name } = state;
 
-    useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
-        if (accessToken == null) {
-            navigate('/');
-        }
-    }, [navigate]);
+  console.log(name);
 
-    return (
-        <Editor />
-    );
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken == null) {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  return <Editor />;
 }
 
 export default Post;
