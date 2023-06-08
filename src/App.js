@@ -1,15 +1,19 @@
 import * as React from 'react';
 import Container from "@mui/material/Container";
-import Editor from "./component/Editor";
+import Authentication from "./component/Authentication";
+import Posts from "./component/Posts";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
-    let clientId = localStorage.getItem("clientId");
-    let clientSecret = localStorage.getItem("clientSecret");
-
     return (
         <div className="App">
             <Container>
-                {clientId != null && clientSecret != null ? <Editor/> : <h2><center>NOT FOUND CLIENT INFO</center></h2>}
+			<BrowserRouter>
+				<Routes>
+                    <Route path="/" element={<Authentication />}></Route>
+                    <Route path="/posts" element={<Posts />}></Route>
+                </Routes>
+			</BrowserRouter>
             </Container>
         </div>
     );
